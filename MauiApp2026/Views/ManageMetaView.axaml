@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MauiApp2026.Views.ManageMetaView">
+    <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0"
+                   Text="Manage Meta"
+                   Padding="20"
+                   FontSize="28"
+                   FontWeight="Bold" />
+        
+        <Border Grid.Row="1" Padding="20">
+            <StackPanel Spacing="15">
+                <TextBlock Text="Manage Categories and Tags" FontSize="18" />
+                
+                <TabControl>
+                    <TabItem Header="Categories">
+                        <Border Padding="15">
+                            <StackPanel Spacing="10">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="Project Categories" FontWeight="Bold" VerticalAlignment="Center" />
+                                    <Button Content="+ Add Category" Padding="10,5" />
+                                </StackPanel>
+                                
+                                <ItemsControl ItemsSource="{Binding CurrentViewModel.Categories}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,0,0,5" Background="#FFFFFF">
+                                                <Grid ColumnDefinitions="20,*,Auto">
+                                                    <Border Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="{Binding ColorBrush}" />
+                                                    <TextBlock Grid.Column="1" Text="{Binding Title}" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </TabItem>
+                    
+                    <TabItem Header="Tags">
+                        <Border Padding="15">
+                            <StackPanel Spacing="10">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="Task Tags" FontWeight="Bold" VerticalAlignment="Center" />
+                                    <Button Content="+ Add Tag" Padding="10,5" />
+                                </StackPanel>
+                                
+                                <ItemsControl ItemsSource="{Binding CurrentViewModel.Tags}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,0,0,5" Background="#FFFFFF">
+                                                <Grid ColumnDefinitions="20,*,Auto">
+                                                    <Border Grid.Column="0" Width="20" Height="20" CornerRadius="4" Background="{Binding ColorBrush}" />
+                                                    <TextBlock Grid.Column="1" Text="{Binding Title}" VerticalAlignment="Center" Margin="10,0,0,0" />
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

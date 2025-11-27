@@ -1,0 +1,72 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MauiApp2026.Views.DashboardView">
+    <Grid ColumnDefinitions="*" RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0"
+                   Text="Dashboard"
+                   Padding="20"
+                   FontSize="28"
+                   FontWeight="Bold" />
+        
+        <Border Grid.Row="1" Padding="20">
+            <ScrollViewer>
+                <StackPanel Spacing="20">
+                    <!-- Stats Section -->
+                    <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="8" Padding="20" Background="#FFFFFF">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto">
+                            <StackPanel Grid.Column="0" Spacing="5">
+                                <TextBlock Text="Total Projects" FontSize="12" Foreground="#999999" />
+                                <TextBlock Text="{Binding CurrentViewModel.TotalProjects}" FontSize="28" FontWeight="Bold" Foreground="#0078D4" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="5" Margin="20,0,0,0">
+                                <TextBlock Text="Active Tasks" FontSize="12" Foreground="#999999" />
+                                <TextBlock Text="{Binding CurrentViewModel.ActiveTasks}" FontSize="28" FontWeight="Bold" Foreground="#107C10" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Spacing="5" Margin="20,0,0,0">
+                                <TextBlock Text="Completed" FontSize="12" Foreground="#999999" />
+                                <TextBlock Text="{Binding CurrentViewModel.CompletedTasks}" FontSize="28" FontWeight="Bold" Foreground="#8661C5" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Recent Projects -->
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Recent Projects" FontSize="18" FontWeight="Bold" />
+                        <ItemsControl ItemsSource="{Binding CurrentViewModel.Projects}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="8" Padding="15" Margin="0,0,0,10" Background="#FFFFFF">
+                                        <StackPanel Spacing="5">
+                                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                                <TextBlock Text="{Binding Icon}" FontSize="20" />
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding Description}" Foreground="#666666" FontSize="13" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <!-- Recent Tasks -->
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="Recent Tasks" FontSize="18" FontWeight="Bold" />
+                        <ItemsControl ItemsSource="{Binding CurrentViewModel.Tasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="8" Padding="15" Margin="0,0,0,5" Background="#FFFFFF">
+                                        <StackPanel Orientation="Horizontal" Spacing="10">
+                                            <CheckBox IsChecked="{Binding IsCompleted}" VerticalAlignment="Center" />
+                                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

@@ -34,7 +34,11 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection services)
     {
-        services.AddLogging(config => config.AddDebug());
+        services.AddLogging(config => 
+        {
+            config.AddDebug()
+                  .SetMinimumLevel(LogLevel.Debug);
+        });
         
         // Add repositories
         services.AddSingleton<ProjectRepository>();
@@ -45,6 +49,9 @@ public partial class App : Application
         services.AddSingleton<ModalErrorHandler>();
 
         // Add view models
+        services.AddSingleton<DashboardViewModel>();
+        services.AddSingleton<ProjectsViewModel>();
+        services.AddSingleton<ManageMetaViewModel>();
         services.AddSingleton<MainWindowViewModel>();
     }
 }

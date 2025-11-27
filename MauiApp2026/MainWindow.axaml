@@ -2,22 +2,88 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:v="using:MauiApp2026.Views"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="600"
         x:Class="MauiApp2026.MainWindow"
-        Title="MauiApp2026">
-    <DockPanel>
-        <TextBlock DockPanel.Dock="Top" 
-                   Text="Welcome to Avalonia UI"
-                   Padding="20"
-                   FontSize="24"
-                   FontWeight="Bold" />
-        
-        <Border Padding="20">
-            <StackPanel Spacing="10">
-                <TextBlock Text="Dashboard" FontSize="18" FontWeight="Bold" />
-                <TextBlock Text="Projects" FontSize="18" FontWeight="Bold" />
-                <TextBlock Text="Manage Meta" FontSize="18" FontWeight="Bold" />
+        Title="MauiApp2026"
+        Background="#FAFAFA">
+    
+    <Grid ColumnDefinitions="250,*" RowDefinitions="*">
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#FFFFFF" BorderBrush="#E0E0E0" BorderThickness="0,0,1,0">
+            <StackPanel Spacing="0">
+                <!-- Header -->
+                <Border Padding="20" BorderBrush="#E0E0E0" BorderThickness="0,0,0,1">
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="MauiApp2026" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Text="Task Manager" Foreground="#888888" FontSize="12" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Menu Items -->
+                <Border Padding="10">
+                    <StackPanel Spacing="5">
+                        <!-- Dashboard -->
+                        <Button Name="DashboardBtn"
+                                Command="{Binding NavigateToDashboardCommand}"
+                                Classes="MenuButton"
+                                Padding="15,12"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Foreground="#333333"
+                                FontSize="14"
+                                BorderThickness="0">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="??" FontSize="18" />
+                                <TextBlock Text="Dashboard" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Projects -->
+                        <Button Name="ProjectsBtn"
+                                Command="{Binding NavigateToProjectsCommand}"
+                                Classes="MenuButton"
+                                Padding="15,12"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Foreground="#333333"
+                                FontSize="14"
+                                BorderThickness="0">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="??" FontSize="18" />
+                                <TextBlock Text="Projects" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+
+                        <!-- Manage Meta -->
+                        <Button Name="ManageMetaBtn"
+                                Command="{Binding NavigateToManageMetaCommand}"
+                                Classes="MenuButton"
+                                Padding="15,12"
+                                HorizontalContentAlignment="Left"
+                                Background="Transparent"
+                                Foreground="#333333"
+                                FontSize="14"
+                                BorderThickness="0">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <TextBlock Text="??" FontSize="18" />
+                                <TextBlock Text="Manage Meta" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
-    </DockPanel>
+
+        <!-- Content Area -->
+        <Grid Grid.Column="1" Background="#FAFAFA">
+            <ContentControl>
+                <ContentControl.Content>
+                    <MultiBinding Converter="{x:Static v:PageConverter.Instance}">
+                        <Binding Path="CurrentPage" />
+                    </MultiBinding>
+                </ContentControl.Content>
+            </ContentControl>
+        </Grid>
+    </Grid>
 </Window>

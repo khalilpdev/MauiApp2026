@@ -1,0 +1,169 @@
+{
+  "Projects": [
+    {
+      "ID": 1,
+      "Name": "Website Redesign",
+      "Description": "Complete redesign of the company website",
+      "Icon": "??",
+      "CategoryID": 1,
+      "Category": {
+        "ID": 1,
+        "Title": "Web Development",
+        "Color": "#0078D4"
+      },
+      "Tasks": [
+        {
+          "ID": 1,
+          "Title": "Design mockups",
+          "IsCompleted": true,
+          "ProjectID": 1
+        },
+        {
+          "ID": 2,
+          "Title": "Frontend development",
+          "IsCompleted": false,
+          "ProjectID": 1
+        },
+        {
+          "ID": 3,
+          "Title": "Backend integration",
+          "IsCompleted": false,
+          "ProjectID": 1
+        }
+      ],
+      "Tags": [
+        {
+          "ID": 1,
+          "Title": "High Priority",
+          "Color": "#D13438",
+          "IsSelected": false
+        },
+        {
+          "ID": 2,
+          "Title": "Frontend",
+          "Color": "#107C10",
+          "IsSelected": false
+        }
+      ]
+    },
+    {
+      "ID": 2,
+      "Name": "Mobile App",
+      "Description": "Native mobile application for iOS and Android",
+      "Icon": "??",
+      "CategoryID": 2,
+      "Category": {
+        "ID": 2,
+        "Title": "Mobile Development",
+        "Color": "#8661C5"
+      },
+      "Tasks": [
+        {
+          "ID": 4,
+          "Title": "Set up project structure",
+          "IsCompleted": true,
+          "ProjectID": 2
+        },
+        {
+          "ID": 5,
+          "Title": "Create UI components",
+          "IsCompleted": true,
+          "ProjectID": 2
+        },
+        {
+          "ID": 6,
+          "Title": "Implement API integration",
+          "IsCompleted": false,
+          "ProjectID": 2
+        },
+        {
+          "ID": 7,
+          "Title": "Testing and debugging",
+          "IsCompleted": false,
+          "ProjectID": 2
+        }
+      ],
+      "Tags": [
+        {
+          "ID": 3,
+          "Title": "Medium Priority",
+          "Color": "#FFB900",
+          "IsSelected": false
+        }
+      ]
+    },
+    {
+      "ID": 3,
+      "Name": "Database Migration",
+      "Description": "Migrate from SQL Server to PostgreSQL",
+      "Icon": "???",
+      "CategoryID": 3,
+      "Category": {
+        "ID": 3,
+        "Title": "DevOps",
+        "Color": "#107C10"
+      },
+      "Tasks": [
+        {
+          "ID": 8,
+          "Title": "Data export",
+          "IsCompleted": true,
+          "ProjectID": 3
+        },
+        {
+          "ID": 9,
+          "Title": "Schema transformation",
+          "IsCompleted": true,
+          "ProjectID": 3
+        },
+        {
+          "ID": 10,
+          "Title": "Data validation",
+          "IsCompleted": false,
+          "ProjectID": 3
+        },
+        {
+          "ID": 11,
+          "Title": "Production deployment",
+          "IsCompleted": false,
+          "ProjectID": 3
+        }
+      ],
+      "Tags": [
+        {
+          "ID": 4,
+          "Title": "Critical",
+          "Color": "#D13438",
+          "IsSelected": false
+        }
+      ]
+    },
+    {
+      "ID": 4,
+      "Name": "Documentation",
+      "Description": "Update API documentation and user guides",
+      "Icon": "??",
+      "CategoryID": 4,
+      "Category": {
+        "ID": 4,
+        "Title": "Documentation",
+        "Color": "#FFB900"
+      },
+      "Tasks": [
+        {
+          "ID": 12,
+          "Title": "Write API docs",
+          "IsCompleted": true,
+          "ProjectID": 4
+        },
+        {
+          "ID": 13,
+          "Title": "Create user guide",
+          "IsCompleted": false,
+          "ProjectID": 4
+        }
+      ],
+      "Tags": []
+    }
+  ]
+}

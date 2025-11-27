@@ -24,16 +24,24 @@ namespace MauiApp2026.Data
 
         public async Task LoadSeedDataAsync()
         {
-            ClearTables();
+            await ClearTablesAsync();
 
             ProjectsJson? payload = null;
             try
             {
                 var filePath = Path.Combine(AppContext.BaseDirectory, _seedDataFilePath);
+                _logger.LogInformation($"Looking for seed data at: {filePath}");
+                
                 if (File.Exists(filePath))
                 {
+                    _logger.LogInformation("Seed data file found, deserializing...");
                     await using var stream = File.OpenRead(filePath);
                     payload = JsonSerializer.Deserialize(stream, JsonContext.Default.ProjectsJson);
+                    _logger.LogInformation($"Deserialized {payload?.Projects.Count ?? 0} projects");
+                }
+                else
+                {
+                    _logger.LogWarning($"Seed data file not found at: {filePath}");
                 }
             }
             catch (Exception e)
@@ -43,7 +51,7 @@ namespace MauiApp2026.Data
 
             try
             {
-                if (payload is not null)
+                if (payload is not null && payload.Projects.Count > 0)
                 {
                     foreach (var project in payload.Projects)
                     {
@@ -59,6 +67,7 @@ namespace MauiApp2026.Data
                         }
 
                         await _projectRepository.SaveItemAsync(project);
+                        _logger.LogInformation($"Saved project: {project.Name}");
 
                         if (project?.Tasks is not null)
                         {
@@ -77,6 +86,11 @@ namespace MauiApp2026.Data
                             }
                         }
                     }
+                    _logger.LogInformation("Seed data loaded successfully");
+                }
+                else
+                {
+                    _logger.LogWarning("No projects found in seed data");
                 }
             }
             catch (Exception e)
@@ -86,7 +100,7 @@ namespace MauiApp2026.Data
             }
         }
 
-        private async void ClearTables()
+        private async Task ClearTablesAsync()
         {
             try
             {
@@ -95,10 +109,11 @@ namespace MauiApp2026.Data
                     _taskRepository.DropTableAsync(),
                     _tagRepository.DropTableAsync(),
                     _categoryRepository.DropTableAsync());
+                _logger.LogInformation("Tables cleared");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                _logger.LogError(e, "Error clearing tables");
             }
         }
     }
