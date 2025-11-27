@@ -26,12 +26,15 @@ namespace MauiApp2026.Data
         {
             ClearTables();
 
-            await using Stream templateStream = await FileSystem.OpenAppPackageFileAsync(_seedDataFilePath);
-
             ProjectsJson? payload = null;
             try
             {
-                payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ProjectsJson);
+                var filePath = Path.Combine(AppContext.BaseDirectory, _seedDataFilePath);
+                if (File.Exists(filePath))
+                {
+                    await using var stream = File.OpenRead(filePath);
+                    payload = JsonSerializer.Deserialize(stream, JsonContext.Default.ProjectsJson);
+                }
             }
             catch (Exception e)
             {

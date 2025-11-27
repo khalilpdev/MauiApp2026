@@ -13,21 +13,8 @@ namespace MauiApp2026.Services
         /// <param name="ex">Exception.</param>
         public void HandleError(Exception ex)
         {
-            DisplayAlertAsync(ex).FireAndForgetSafeAsync();
-        }
-
-        async Task DisplayAlertAsync(Exception ex)
-        {
-            try
-            {
-                await _semaphore.WaitAsync();
-                if (Shell.Current is Shell shell)
-                    await shell.DisplayAlertAsync("Error", ex.Message, "OK");
-            }
-            finally
-            {
-                _semaphore.Release();
-            }
+            System.Console.WriteLine($"Error: {ex.Message}");
+            // TODO: Implement Avalonia dialog display
         }
     }
 }

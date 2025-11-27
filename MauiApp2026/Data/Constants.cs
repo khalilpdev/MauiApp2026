@@ -5,6 +5,6 @@ namespace MauiApp2026.Data
         public const string DatabaseFilename = "AppSQLite.db3";
 
         public static string DatabasePath =>
-            $"Data Source={Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename)}";
+            $"Data Source={Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MauiApp2026", DatabaseFilename)}";
     }
 }

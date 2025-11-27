@@ -1,3 +1,5 @@
+using Avalonia;
+using Avalonia.Media;
 using System.Text.Json.Serialization;
 
 namespace MauiApp2026.Models
@@ -13,7 +15,14 @@ namespace MauiApp2026.Models
         {
             get
             {
-                return new SolidColorBrush(Microsoft.Maui.Graphics.Color.FromArgb(Color));
+                try
+                {
+                    return new SolidColorBrush(Avalonia.Media.Color.Parse(Color));
+                }
+                catch
+                {
+                    return new SolidColorBrush(Colors.Red);
+                }
             }
         }
 
